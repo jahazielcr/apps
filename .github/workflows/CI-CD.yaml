@@ -49,4 +49,18 @@ jobs:
         name: Checkout OPS code
         with:
           repository: ${{ env.OPS_REPO }}
-          ssh-key: ${{ secrets.OPS_TOKEN }} 
+          ssh-key: ${{ secrets.OPS_TOKEN }}
+
+      - name: Setup Kustomize
+        uses: imranismail/setup-kustomize@v1
+        with:
+          kustomize-version: "3.6.1"
+
+      - name: Update Kubernates resources
+        run: |
+          cd public-api/overlays/stage
+          kustomize edit set image KUSTOMIZE-DEFINIED=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/${{ env.VERSION }}
+
+          # Optional
+          kustomize build . > app.yaml
+          cat app.yaml
