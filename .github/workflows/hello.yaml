@@ -17,7 +17,7 @@ jobs:
 
       - name: The Job has succeded?
         if: ${{ success() }}
-        run: return 1
+        run: return 2
 
       - name: The job has failed?
         if: ${{ failure() }}
