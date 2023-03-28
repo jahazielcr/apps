@@ -2,11 +2,11 @@ name: Docker Image CI
 
 on:
   push:
-    branch: ["stage"]
+    branch: [ "stage" ]
 
 env:
   REGISTRY: jcalderon
-  IMAGE_NAME: public:1.0.0
+  IMAGE_NAME: public
   OPS_BRANCH: main
   OPS_REPO: jahazielcr/ops
 
@@ -25,3 +25,13 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+       - name: Build & Push
+         uses: docker/build-push-actions@v3
+         with:
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          build-args: |
+            APP_ENV= ${{ secret.APP_ENV  }}
+
+       - name: Run test
+         run: docker run --rm --name api -p 3000:3000 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest 
