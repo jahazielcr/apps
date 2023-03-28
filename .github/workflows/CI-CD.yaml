@@ -19,7 +19,7 @@ jobs:
         with:
           fetch-depth: 0
 
-       - name: logint to Dockerhub
+       - name: login to Dockerhub
          uses: docker/login-action@v2
          with:
           username: ${{ secrets.DOCKER_USERNAME }}
