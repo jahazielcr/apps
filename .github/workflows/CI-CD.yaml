@@ -8,7 +8,7 @@ env:
   REGISTRY: jcalderon
   IMAGE_NAME: public
   OPS_BRANCH: main
-  OPS_REPO: cachac/ops
+  OPS_REPO: jahazielcr/ops
 
 jobs:
 
