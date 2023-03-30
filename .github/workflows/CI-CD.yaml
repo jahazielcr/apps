@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker Image CI Stage
 
 on:
   push:
@@ -9,7 +9,7 @@ env:
   IMAGE_NAME: public
   OPS_BRANCH: main
   OPS_REPO: jahazielcr/ops
-  VERSION: 2.0.0
+  VERSION: 5.0.0
 
 jobs:
 
