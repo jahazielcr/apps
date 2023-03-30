@@ -68,6 +68,7 @@ jobs:
           # Optional
           kustomize build . > app.yaml
           cat app.yaml
+          
       - name: Commit changes to git OPS
         if: steps.verify_diff.outputs.changed == 'true'
         run: |
