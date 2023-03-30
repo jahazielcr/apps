@@ -54,7 +54,7 @@ jobs:
       - name: Check if there are any changes
         id: verify_diff
         run: |
-          git diff --quiet . || echo "changed=true" >> $GITHUB_OUTPUT; else echo "IS_VALID=false" >> $GITHUB_OUTPUT;fi
+          git diff --quiet . || echo "changed=true" >> $GITHUB_OUTPUT
 
       - name: Setup Kustomize
         uses: imranismail/setup-kustomize@v1
