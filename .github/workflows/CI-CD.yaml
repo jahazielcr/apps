@@ -69,6 +69,7 @@ jobs:
           kustomize build . > app.yaml
           cat app.yaml
       - name: Commit changes to git OPS
+        if: steps.verify_diff.outputs.changed == 'true'
         run: |
           git config --local user.email "deploy-bot@stotylabs.dev"
           git config --local user.name "Storylabs deploy-Bot"
