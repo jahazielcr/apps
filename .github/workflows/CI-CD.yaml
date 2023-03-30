@@ -9,7 +9,7 @@ env:
   IMAGE_NAME: public
   OPS_BRANCH: main
   OPS_REPO: jahazielcr/ops
-  VERSION: 3.0.0
+  VERSION: 5.0.0
 
 jobs:
 
@@ -18,10 +18,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3 # checkout github code
+      - uses: actions/checkout@v3 
         name: Checkout code
         with:
-          fetch-depth: 0 # fetch tags
+          fetch-depth: 0 
 
       - name: Login to DockerHub
         uses: docker/login-action@v2
