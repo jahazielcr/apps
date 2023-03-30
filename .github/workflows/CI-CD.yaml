@@ -51,7 +51,7 @@ jobs:
           repository: ${{ env.OPS_REPO }}
           ssh-key: ${{ secrets.OPS_TOKEN }}
         
-      - name: Check if there are any changes
+      - name: Check if there are any changes if not the action workflow stop and return ok
         id: verify_diff
         run: |
           git diff --quiet . || echo "changed=true" >> $GITHUB_OUTPUT
@@ -68,7 +68,7 @@ jobs:
           # Optional
           kustomize build . > app.yaml
           cat app.yaml
-          
+
       - name: Commit changes to git OPS
         if: steps.verify_diff.outputs.changed == 'true'
         run: |
